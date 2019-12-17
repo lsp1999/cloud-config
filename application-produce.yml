@@ -1,0 +1,42 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    username: root
+    password: TestDB@2018
+    url: jdbc:mysql://10.144.96.167:3306/testing?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/**/*Mapper.xml
+  type-aliases-package: dzqd.kc.testing.lsp.*.pojo
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  page-size-zero: true
+  params: count=countSql
+
+jwtToken:
+  secret: testing
+  expiration: 32400000
+
+Jira:
+  issueSearchUrl: http://10.7.253.247:8080/rest/api/2/search
+  issueTypeSearchUrl: http://10.7.253.247:8080/rest/api/2/issuetype
+  projectSearchUrl: http://10.7.253.247:8080/rest/api/2/project
+  issueSearchFields: id,issuetype,project,created,updated,status,summary,creator,assignee,parent,subtasks
+  issueSearchExpand: changelog
+  acceptName: Accept
+  contentTypeValue: application/json
+  authorizationName: Authorization
+  authorizationValue: Basic bGl1c2h1cGVuZzpEWlFEX0pJUkExMDQ=
+
+logging:
+  level:
+    dzqd.kc.testing.*: warn
+  path: testinglog/
+  file:
+    max-history: 30

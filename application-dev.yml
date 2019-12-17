@@ -1,0 +1,44 @@
+server:
+  port: 9999
+
+spring:
+  datasource:
+    username: root
+    password:
+    url: jdbc:mysql://localhost:3306/testing?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis:
+  mapper-locations: classpath:mapping/**/*Mapper.xml
+  type-aliases-package: dzqd.kc.testing.lsp.*.pojo
+
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  page-size-zero: true
+  params: count=countSql
+
+jwtToken:
+  secret: testing
+  expiration: 600000
+
+Jira:
+  issueSearchUrl: http://10.7.253.247:8080/rest/api/2/search
+  issueTypeSearchUrl: http://10.7.253.247:8080/rest/api/2/issuetype
+  projectSearchUrl: http://10.7.253.247:8080/rest/api/2/project
+  #需要展示的字段
+  issueSearchFields: id,issuetype,project,created,updated,status,summary,creator,assignee,parent,subtasks
+  #关于issue的附加信息
+  issueSearchExpand: changelog
+  acceptName: Accept
+  contentTypeValue: application/json
+  authorizationName: Authorization
+  authorizationValue: Basic bGl1c2h1cGVuZzpEWlFEX0pJUkExMDQ=
+
+logging:
+  level:
+    dzqd.kc.testing.*: debug
+  path: D:/springbootlog/testing/
+  file:
+    max-history: 30
