@@ -5,14 +5,14 @@ spring:
 spring:
   profiles: dev
   server:
-    port: 9999
+    port: 8001
     
 spring:
   profiles: test
   server:
-    port: 8888
+    port: 8011
     
 spring:
   profiles: produce
   server:
-    port: 7777
+    port: 8111
